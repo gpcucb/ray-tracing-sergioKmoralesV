@@ -6,7 +6,7 @@ MiniTest::Reporters.use!
 
 class RGBTest < Minitest::Test
   def setup
-    @a_rgb = RGB.new()
+    @a_rgb = RGB.new(255,255,255)
   end
 
   def test_01_creates_an_object_rgb
