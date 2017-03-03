@@ -9,4 +9,7 @@ class Vector
   def add_vector another_vector
     Vector.new(@x+another_vector.x , @y+another_vector.y, @z+another_vector.z)
   end
+  def substract_vector another_vector
+    Vector.new(@x-another_vector.x , @y-another_vector.y, @z-another_vector.z)
+  end
 end

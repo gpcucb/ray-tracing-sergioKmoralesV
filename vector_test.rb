@@ -21,4 +21,10 @@ class VectorTest < Minitest::Test
     assert_equal(@a_vector.y+@another_vector.y, result.y)
     assert_equal(@a_vector.z+@another_vector.z, result.z)
   end
+  def test_03_substract_two_vectors_correctly
+    result = @a_vector.substract_vector(@another_vector)
+    assert_equal(@a_vector.x-@another_vector.x, result.x)
+    assert_equal(@a_vector.y-@another_vector.y, result.y)
+    assert_equal(@a_vector.z-@another_vector.z, result.z)
+  end
 end
