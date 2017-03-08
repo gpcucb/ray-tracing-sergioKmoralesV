@@ -5,5 +5,11 @@ class Camera
     @center = center
     @up = up
   end
-  
+
+  def vector_w()
+    x = @e.x/@e.module
+    y = @e.y/@e.module
+    z = @e.z/@e.module
+    Vector.new(x, y, z)
+  end
 end

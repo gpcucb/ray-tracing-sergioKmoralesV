@@ -34,4 +34,8 @@ class VectorTest < Minitest::Test
     assert_equal(a_expected_module, @a_vector.module)
   end
 
+  def test_05_cross_product
+    
+  end
+
 end
