@@ -27,4 +27,11 @@ class VectorTest < Minitest::Test
     assert_equal(@a_vector.y-@another_vector.y, result.y)
     assert_equal(@a_vector.z-@another_vector.z, result.z)
   end
+
+  def test_04_module_of_a_vector
+    x,y,z = 4,5,8
+    a_expected_module = Math.sqrt((x**2) + (y**2) + (z**2))
+    assert_equal(a_expected_module, @a_vector.module)
+  end
+
 end
