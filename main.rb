@@ -1,15 +1,21 @@
-require_relative 'vector'
+require_relative 'vector.rb'
+require_relative 'camera.rb'
+vector1 = Vector.new(1,2,3)
+vector2 = Vector.new(45,78,23)
 
-@vector_1 = Vector.new(35,36,-5)
-@vector_2 = Vector.new(8,-10,4)
 
-@vector_1.show()
-@vector_2.show()
+e = Vector.new(1,2,-6)
+center = Vector.new(1,2,-4)
+up = Vector.new(0,1,0)
+fov = 39.0
+df = 1.0
+nx = 640.0
+ny = 480.0
 
-add_vectors_result = @vector_1.add_vector(@vector_2)
-puts 'ADD'
-add_vectors_result.show()
-
-substract_vectors_result = @vector_1.substract_vector(@vector_2)
-puts 'SUBSTRACT'
-substract_vectors_result.show()
+camera = Camera.new(e,center,up,fov,df)
+(0...nx).each do |i|
+  (0...ny).each do |j|
+    dir = camera.calculate_distance(i,j,nx,ny)
+    dir.show
+  end
+end

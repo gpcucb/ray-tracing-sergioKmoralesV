@@ -20,6 +20,7 @@ class Vector
     Math.sqrt((@x**2) + (@y**2) + (@z**2))
   end
 
+  #Producto vectorial
   def cross_product another_vector
     i = (@y * another_vector.z) - (@z * another_vector.y)
     j = (@z * another_vector.x) - (@x * another_vector.z)
@@ -27,10 +28,15 @@ class Vector
     Vector.new(i,j,k)
   end
 
+  #Producto escalar
   def dot_product another_vector
-    (@x * another_vector.x) + (@y * another_vector.y) + (@z * another_vector.z)
+    ((@x * another_vector.x) + (@y * another_vector.y) + (@z * another_vector.z)).to_f
   end
 
+  #X * vector
+  def number_product a_number
+    Vector.new(@x*a_number, @y*a_number, @z*a_number)
+  end
   def show
     puts as_string
   end
