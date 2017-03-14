@@ -37,6 +37,7 @@ class Vector
   def number_product a_number
     Vector.new(@x*a_number, @y*a_number, @z*a_number)
   end
+  
   def show
     puts as_string
   end

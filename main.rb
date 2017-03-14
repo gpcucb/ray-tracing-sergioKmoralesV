@@ -15,7 +15,7 @@ ny = 480.0
 camera = Camera.new(e,center,up,fov,df)
 (0...nx).each do |i|
   (0...ny).each do |j|
-    dir = camera.calculate_distance(i,j,nx,ny)
+    dir = camera.ray_direction(i,j,nx,ny)
     dir.show
   end
 end
