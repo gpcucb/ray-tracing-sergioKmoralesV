@@ -45,6 +45,13 @@ class VectorTest < Minitest::Test
   def test_06_dot_product_calculated_correctly
     x1,y1,z1,x2,y2,z2 = @a_vector.x,@a_vector.y,@a_vector.z,@another_vector.x,@another_vector.y,@another_vector.z
     assert_equal(x1*x2+y1*y2+z1*z2,@a_vector.dot_product(@another_vector))
-    
+  end
+
+  def test_07_number_product_calculated_correctly
+    a_number = 5
+    result = @a_vector.number_product(a_number)
+    assert_equal(@a_vector.x * a_number,result.x)
+    assert_equal(@a_vector.y * a_number,result.y)
+    assert_equal(@a_vector.z * a_number,result.z)
   end
 end
