@@ -34,8 +34,12 @@ class VectorTest < Minitest::Test
     assert_equal(a_expected_module, @a_vector.module)
   end
 
-  def test_05_cross_product
-    
+  def test_05_cross_product_calculated_correctly
+    x1,y1,z1,x2,y2,z2 = @a_vector.x,@a_vector.y,@a_vector.z,@another_vector.x,@another_vector.y,@another_vector.z
+    result = @a_vector.cross_product(@another_vector)
+    assert_equal(y1*z2 - z1*y2, result.x)
+    assert_equal(z1*x2 - x1*z2, result.y)
+    assert_equal(x1*y2 - x2*y1, result.z)
   end
 
 end
