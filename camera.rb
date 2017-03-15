@@ -29,7 +29,7 @@ class Camera
     a_w_vector.cross_product(a_u_vector)
   end
 
-  def ray_direction(i,j,nx,ny)
+  def calculate_ray_direction(i,j,nx,ny)
     t = df * Math::tan(@fov / 2).to_f
     b = -t
     r = (((nx.to_f * t) / ny.to_f)).to_f

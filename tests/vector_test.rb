@@ -1,9 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
 require './vector'
-
-MiniTest::Reporters.use!
-
 class VectorTest < Minitest::Test
   def setup
     @a_vector = Vector.new(4,5,8)
