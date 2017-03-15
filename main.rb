@@ -9,7 +9,7 @@ e= Vector.new(278,273,-800)
 center= Vector.new(278,273,-700)
 up= Vector.new(0,1,0)
 fov= 39.31
-df=0.035
+df= 0.035
 
 nx = 640.0
 ny = 480.0
