@@ -11,8 +11,8 @@ class Sphere
 
     a = d.dot_product(d)
     e_c =  e.substract_vector(@position)
-    b = d.number_product(2).dot_product(e_c)
-    c = e_c.dot_product(e_c) - @radius**2
+    b = (d.number_product(2)).dot_product(e_c)
+    c = e_c.dot_product(e_c) - @radius*@radius
 
     puts "(A:#{a} B:#{b} C:#{c})"
   end
