@@ -10,7 +10,7 @@ class Camera
   end
 
   def calculate_w_vector
-    distance = @eye.substract_vector(@center)
+    distance = @center.substract_vector(@eye)
     x = distance.x/distance.module
     y = distance.y/distance.module
     z = distance.z/distance.module
@@ -29,16 +29,19 @@ class Camera
     a_w_vector.cross_product(a_u_vector)
   end
 
-  def calculate_ray_direction(i,j,nx,ny)
+  def ray_direction(i,j,nx,ny)
     t = df * Math::tan(@fov / 2).to_f
     b = -t
     r = (((nx.to_f * t) / ny.to_f)).to_f
     l = -r
+
     u = l + ((r-l) * (i+0.5)) / nx
     v = b + ((t-b) * (j+0.5)) / ny
+
     dw = calculate_w_vector.number_product(-df)
     uu = (calculate_u_vector(calculate_w_vector)).number_product(u)
     vv = (calculate_v_vector(calculate_w_vector,calculate_u_vector(calculate_w_vector))).number_product(v)
+
     dw.add_vector(uu.add_vector(vv))
   end
 end
