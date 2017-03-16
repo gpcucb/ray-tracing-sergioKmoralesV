@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
 require './vector'
+
 class VectorTest < Minitest::Test
   def setup
     @a_vector = Vector.new(4,5,8)
@@ -45,7 +46,7 @@ class VectorTest < Minitest::Test
   end
 
   def test_07_number_product_calculated_correctly
-    a_number = 5
+    a_number = 8
     result = @a_vector.number_product(a_number)
     assert_equal(@a_vector.x * a_number,result.x)
     assert_equal(@a_vector.y * a_number,result.y)

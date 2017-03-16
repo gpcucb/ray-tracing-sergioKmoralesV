@@ -5,7 +5,7 @@ class Camera
     @eye = eye
     @center = center
     @up = up
-    @fov = fov.to_f #escalar
+    @fov = ((fov * Math::PI)/180).to_f #escalar
     @df = df.to_f #escalar
   end
 
@@ -30,18 +30,18 @@ class Camera
   end
 
   def ray_direction(i,j,nx,ny)
-    t = @df * Math::tan(@fov / 2).to_f
+    t = @df * Math::tan(@fov/2).to_f
     b = -t
-    r = (((nx.to_f * t) / ny.to_f)).to_f
+    r = (((nx * t) / ny)).to_f
     l = -r
 
-    u = l + ((r-l) * (i+0.5)) / nx
-    v = b + ((t-b) * (j+0.5)) / ny
+    u = l + ((r - l) * (i + 0.5))/nx
+    v = b + ((t - b) * (j + 0.5))/ny
 
     dw = calculate_w_vector.number_product(-@df)
     uu = (calculate_u_vector(calculate_w_vector)).number_product(u)
     vv = (calculate_v_vector(calculate_w_vector,calculate_u_vector(calculate_w_vector))).number_product(v)
 
-    dw.add_vector(uu.add_vector(vv))
+    return dw.add_vector(uu.add_vector(vv))
   end
 end
