@@ -5,7 +5,7 @@ class Camera
     @eye = eye
     @center = center
     @up = up
-    @fov = ((fov * Math::PI)/180).to_f #escalar
+    @fov = ((fov * Math::PI)/180).to_f#why? convert degrees to radians
     @df = df.to_f #escalar
   end
 
