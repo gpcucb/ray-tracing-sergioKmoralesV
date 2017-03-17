@@ -28,7 +28,7 @@ class Sphere
 
     success = false
 
-    if((t0 > 0.1) && (t0 < t)
+    if((t0 > 0.1) && (t0 < t))
       t = t0
       success = true
     end

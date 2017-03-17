@@ -33,8 +33,8 @@ class RayTracer < Renderer
   def calculate_pixel(i, j)
     #degradado
     #color = Rgb.new( 1.0, i.to_f/@nx, j.to_f/@ny)
-    #{red: color.r, green: color.g, blue: color.b}
-    e = @camera.e
+    #{red: color.red, green: color.green, blue: color.blue}
+    e = @camera.eye
     dir = @camera.ray_direction(i,j,@nx,@ny)
     ray = Ray.new(e, dir)
     t = Float::INFINITY
@@ -52,6 +52,6 @@ class RayTracer < Renderer
       color =  Rgb.new(1.0,1.0,0.0)
     end
 
-    return {red: color.r, green: color.g, blue: color.b}
+    return {red: color.red, green: color.green, blue: color.blue}
   end
 end

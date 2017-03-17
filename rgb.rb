@@ -1,4 +1,4 @@
-class RGB
+class Rgb
   attr_accessor :red,:green,:blue
   def initialize(red, green, blue)
     @red = red.to_f
