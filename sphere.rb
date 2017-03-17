@@ -7,7 +7,7 @@ class Sphere
     @radius = radius.to_f
   end
 
-  def intersection? (ray)
+  def intersection? (ray, t)
     e = ray.position
     d = ray.direction
 
@@ -26,7 +26,18 @@ class Sphere
     t0 = ((b * -1) - Math.sqrt(discriminant))/(2*a)
     t1 = ((b * -1) + Math.sqrt(discriminant))/(2*a)
 
-    
+    success = false
+
+    if((t0 > 0.1) && (t0 < t)
+      t = t0
+      success = true
+    end
+    if((t1 > 0.1) && (t1 < t))
+      t = t1
+      success = true
+    end
+
+    Intersection.new(t, success)
   end
 
 end

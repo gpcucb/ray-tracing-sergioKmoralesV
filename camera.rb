@@ -1,4 +1,6 @@
 require_relative 'vector.rb'
+
+
 class Camera
   attr_accessor :eye, :center, :up, :fov, :df
   def initialize(eye, center, up, fov ,df)
