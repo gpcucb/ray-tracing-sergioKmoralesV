@@ -23,6 +23,10 @@ class Sphere
 
     puts "(A:#{a} B:#{b} C:#{c})"
 
+    t0 = ((b * -1) - Math.sqrt(discriminant))/(2*a)
+    t1 = ((b * -1) + Math.sqrt(discriminant))/(2*a)
+
+    
   end
 
 end
