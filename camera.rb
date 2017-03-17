@@ -14,7 +14,7 @@ class Camera
     x = distance.x/distance.module
     y = distance.y/distance.module
     z = distance.z/distance.module
-    Vector.new(x, y, z)
+    Vector.new(-x, -y, -z)
   end
 
   def calculate_u_vector a_w_vector

@@ -1,3 +1,5 @@
+require_relative 'intersection.rb'
+
 class Sphere
   attr_accessor :position, :radius
   def initialize(position, radius)
@@ -11,10 +13,16 @@ class Sphere
 
     a = d.dot_product(d)
     e_c =  e.substract_vector(@position)
-    b = d.number_product(2).dot_product(e_c)
+    dd = d.number_product(2)
+    b = dd.dot_product(e_c)
     c = e_c.dot_product(e_c) - @radius ** 2
 
+    discriminant = b**2 - 4*a*c
+
+    return Intersection.unsuccessful if (discriminant < 0.0)
+
     puts "(A:#{a} B:#{b} C:#{c})"
+
   end
 
 end
