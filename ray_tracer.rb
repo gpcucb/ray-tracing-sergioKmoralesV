@@ -3,6 +3,8 @@ require_relative 'camera.rb'
 require_relative 'vector.rb'
 require_relative 'rgb.rb'
 require_relative 'intersection.rb'
+require_relative 'triangle.rb'
+
 
 class RayTracer < Renderer
 
@@ -25,9 +27,16 @@ class RayTracer < Renderer
     position = Vector.new(370,120,370)
     radius = 120
 
+    # Valores del triángulo
+    a = Vector.new(552.0,8.0,0.0)
+    b = Vector.new(0.0,0.0,330.0)
+    c = Vector.new(0.0,0.0,560.0)
+
     @sphere = Sphere.new(position, radius)
+    @triangle = Triangle.new(a, b, c)
     @objects=[]
     @objects << @sphere
+    @objects << @triangle
   end
 
   def calculate_pixel(i, j)
