@@ -1,10 +1,11 @@
 require_relative 'intersection.rb'
 
 class Sphere
-  attr_accessor :position, :radius
-  def initialize(position, radius)
+  attr_accessor :position, :radius, :color
+  def initialize(position, radius, color)
     @position = position
     @radius = radius.to_f
+    @color = color
   end
 
   def intersection? (ray, t)

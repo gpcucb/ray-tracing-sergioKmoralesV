@@ -32,8 +32,8 @@ class RayTracer < Renderer
     b = Vector.new(0.0,0.0,0.0)
     c = Vector.new(0.0,0.0,560.0)
 
-    @sphere = Sphere.new(position, radius)
-    @triangle = Triangle.new(a, b, c)
+    @sphere = Sphere.new(position, radius, Rgb.new(1.0,1.0,0.0))
+    @triangle = Triangle.new(a, b, c, Rgb.new(1.0,0.0,0.0))
     @objects=[]
     @objects << @sphere
     @objects << @triangle
@@ -58,7 +58,7 @@ class RayTracer < Renderer
     if @obj_int==nil
       color = Rgb.new(0.0,0.0,0.0)
     else
-      color =  Rgb.new(1.0,1.0,0.0)
+      color =  @obj_int.color
     end
 
     return {red: color.red, green: color.green, blue: color.blue}
