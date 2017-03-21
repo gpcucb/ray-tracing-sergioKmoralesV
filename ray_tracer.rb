@@ -29,7 +29,7 @@ class RayTracer < Renderer
 
     # Valores del triángulo
     a = Vector.new(552.0,8.0,0.0)
-    b = Vector.new(0.0,0.0,330.0)
+    b = Vector.new(0.0,0.0,0.0)
     c = Vector.new(0.0,0.0,560.0)
 
     @sphere = Sphere.new(position, radius)
