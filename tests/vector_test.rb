@@ -52,4 +52,14 @@ class VectorTest < Minitest::Test
     assert_equal(@a_vector.y * a_number,result.y)
     assert_equal(@a_vector.z * a_number,result.z)
   end
+
+  def test_08_calculates_normalized_vector_correctly
+    x,y,z = 4.0,5.0,8.0
+    a_expected_module = Math.sqrt((x**2) + (y**2) + (z**2))
+
+    result = @a_vector.normalize
+    assert_equal(x/a_expected_module,result.x)
+    assert_equal(y/a_expected_module,result.y)
+    assert_equal(z/a_expected_module,result.z)
+  end
 end
