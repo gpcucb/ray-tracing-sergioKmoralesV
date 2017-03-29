@@ -1,10 +1,10 @@
 class Triangle
-  attr_accessor :a, :b, :c,:color
-  def initialize(a,b,c,color)
+  attr_accessor :a, :b, :c,:material
+  def initialize(a,b,c,material)
     @a = a
     @b = b
     @c = c
-    @color = color
+    @material = material
   end
   def intersection? (ray, t)
     e_ray = ray.position
