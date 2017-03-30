@@ -42,7 +42,8 @@ class Renderer
     init_gl
     at_exit do
       puts 'Saving file'
-      save_image('raytracing.png')
+      #save_image('2D.png') #2D
+      save_image('lambert.png') #Sombras lambert
     end
     glutMainLoop
   end

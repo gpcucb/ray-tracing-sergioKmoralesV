@@ -8,6 +8,11 @@ class Sphere
     @material = material
   end
 
+  def normal(a_intersection_point)
+    intersection_normal = a_intersection_point.substract_vector(@position)
+    return Vector.new(intersection_normal.x / @radius , intersection_normal.y / @radius , intersection_normal.z / @radius )
+  end
+
   def intersection? (ray, t)
     e = ray.position
     d = ray.direction
@@ -22,7 +27,7 @@ class Sphere
 
     return Intersection.unsuccessful if (discriminant < 0.0)
 
-    puts "(A:#{a} B:#{b} C:#{c})"
+    #puts "(A:#{a} B:#{b} C:#{c})"
 
     t0 = ((b * -1) - Math.sqrt(discriminant))/(2*a)
     t1 = ((b * -1) + Math.sqrt(discriminant))/(2*a)

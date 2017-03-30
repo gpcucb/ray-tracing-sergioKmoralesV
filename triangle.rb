@@ -36,7 +36,7 @@ class Triangle
     if ( beta>0.0 && gama>0.0 && beta+gama <1.0 )
       success = true
       return Intersection.new(t, success)
-      puts "(B:#{beta} G:#{gama} t:#{t})"
+      #puts "(B:#{beta} G:#{gama} t:#{t})"
     else
       return Intersection.unsuccessful
     end

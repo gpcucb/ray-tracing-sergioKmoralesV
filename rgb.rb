@@ -14,7 +14,17 @@ class Rgb
     Rgb.new(@red-a_color.red, @green-a_color.green, @blue-a_color.blue)
   end
 
-  def times_color (a_number)
-    Rgb.new(@red*a_number, @green*a_number, @blue*a_number,)
+  def multiply_color (a_color)
+    red = @red*a_color.red
+    green = @green*a_color.green
+    blue = @blue*a_color.blue
+
+    Rgb.new(red,green,blue)
   end
+
+  def times_color (a_number)
+    number_as_float = a_number.to_f
+    Rgb.new(@red*number_as_float, @green*number_as_float, @blue*number_as_float)
+  end
+
 end
