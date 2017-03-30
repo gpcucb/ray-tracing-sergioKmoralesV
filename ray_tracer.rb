@@ -124,7 +124,13 @@ class RayTracer < Renderer
 
       #color =  @obj_int.material.diffuse #2D
       #color = lambert #shade lambert
-      color = lambert.add_color(blinn_phong) #3D Phong
+      #color = lambert.add_color(blinn_phong) #3D Phong
+      
+      #Ambient values
+      ka = @obj_int.material.diffuse
+      @ambient_light = Rgb.new(0.15,0.15,0.15)
+
+      color = lambert.add_color(blinn_phong).add_color(@ambient_light.multiply_color(ka))
     end
 
     return {red: color.red, green: color.green, blue: color.blue}
