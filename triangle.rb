@@ -7,9 +7,21 @@ class Triangle
     @material = material
   end
 
-  def normal(a_intersection_point)
-    return (@b.substract_vector(@a)).cross_product(@c.substract_vector(@a))
-  end
+  def isLeft?(n)
+	m = n.module()
+	return n.x/m < 0 && n.y/m < 0 && n.z/m < 0
+end
+
+def normal(a_point)
+	b_a = @b.substract_vector(@a)
+	c_a = @c.substract_vector(@a)
+
+	normal = b_a.cross_product(c_a)
+	if isLeft?(normal)
+		normal = normal.number_product(-1)
+	end
+	return normal
+end
 
   def intersection? (ray, t)
     e_ray = ray.position
