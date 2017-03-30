@@ -6,6 +6,11 @@ class Triangle
     @c = c
     @material = material
   end
+
+  def normal(a_intersection_point)
+    return (@b.substract_vector(@a)).cross_product(@c.substract_vector(@a))
+  end
+
   def intersection? (ray, t)
     e_ray = ray.position
     d_ray = ray.direction

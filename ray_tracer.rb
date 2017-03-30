@@ -37,25 +37,30 @@ class RayTracer < Renderer
     power = 60
     reflection = 0.5
 
-    # Valores de la esfera
-    position = Vector.new(-100,-100,370)
+    # Valores de la esfera 1
+    position1 = Vector.new(-100,-100,370)
     radius = 120
 
+    # Valores de la esfera 2
+    position2 = Vector.new(100,-100,370)
+
     # Valores del triángulo
-    a = Vector.new(552.0,8.0,0.0)
-    b = Vector.new(0.0,0.0,0.0)
-    c = Vector.new(0.0,0.0,560.0)
+    a = Vector.new(30,-200,-200)
+    b = Vector.new(20,-100,-400)
+    c = Vector.new(100,-10,-200)
 
     # Light Values
     light_color = Rgb.new(0.8,0.6,0.7)
     light_position = Vector.new(0.0, 0.0, 200.0)
     @light = Light.new(light_position,light_color)
 
-    @sphere = Sphere.new(position, radius, Material.new(yellow,specular,power,reflection))
+    @sphere1 = Sphere.new(position1, radius, Material.new(yellow,specular,power,reflection))
+    @sphere2 = Sphere.new(position2, radius, Material.new(fucsia,specular,power,reflection))
     @triangle = Triangle.new(a, b, c, Material.new(red,specular,power,reflection))
     @objects=[]
-    @objects << @sphere
-    #@objects << @triangle
+    @objects << @sphere1
+    @objects << @sphere2
+    @objects << @triangle
   end
 
   def max(a_number,another_number)
@@ -125,10 +130,10 @@ class RayTracer < Renderer
       #color =  @obj_int.material.diffuse #2D
       #color = lambert #shade lambert
       #color = lambert.add_color(blinn_phong) #3D Phong
-      
+
       #Ambient values
       ka = @obj_int.material.diffuse
-      @ambient_light = Rgb.new(0.15,0.15,0.15)
+      @ambient_light = Rgb.new(0.30,0.30,0.30)
 
       color = lambert.add_color(blinn_phong).add_color(@ambient_light.multiply_color(ka))
     end
