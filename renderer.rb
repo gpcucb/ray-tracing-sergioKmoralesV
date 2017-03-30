@@ -44,7 +44,8 @@ class Renderer
       puts 'Saving file'
       #save_image('2D.png') #2D
       #save_image('lambert.png') #Sombras lambert
-      save_image('phong.png') #Sombras phong
+      #save_image('phong.png') #Sombras phong
+      save_image('Ray Tracing.png') #Sombras phong
     end
     glutMainLoop
   end
