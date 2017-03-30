@@ -19,8 +19,8 @@ class RayTracer < Renderer
     @nx = @width
     @ny = @height
     # Cámara
-    e= Vector.new(278,273,-800)
-    center= Vector.new(278,273,-500)
+    e= Vector.new(0,0,-400)
+    center= Vector.new(0,0,0)
     up= Vector.new(0,1,0)
     fov= 39.31
     df=0.035
@@ -38,7 +38,7 @@ class RayTracer < Renderer
     reflection = 0.5
 
     # Valores de la esfera
-    position = Vector.new(370,120,370)
+    position = Vector.new(-100,-100,370)
     radius = 120
 
     # Valores del triángulo
@@ -48,7 +48,6 @@ class RayTracer < Renderer
 
     # Light Values
     light_color = Rgb.new(0.8,0.6,0.7)
-    puts "#{light_color.red} #{light_color.green} #{light_color.blue}"
     light_position = Vector.new(0.0, 0.0, 200.0)
     @light = Light.new(light_position,light_color)
 
@@ -78,6 +77,22 @@ class RayTracer < Renderer
     return kdI.times_color(max)
   end
 
+  def calculate_blinn_phong_shading(intersection_point, intersection_normal, ray, light, object)
+    n = intersection_normal.normalize
+    v = ray.position.substract_vector(intersection_point).normalize
+    l = light.position.substract_vector(intersection_point).normalize
+    h = v.add_vector(l).normalize
+
+    nh = n.dot_product(h)
+    ks = object.material.specular
+    p = object.material.power
+    max = max(0,nh)
+    ksI = ks.multiply_color(light.color)
+
+    return ksI.times_color(max**p)
+
+  end
+
   def calculate_pixel(i, j)
     #degradado
     #color = Rgb.new( 1.0, i.to_f/@nx, j.to_f/@ny)
@@ -103,9 +118,13 @@ class RayTracer < Renderer
       intersection_normal = @obj_int.normal(intersection_point)
 
       lambert = calculate_lambertian_shading(intersection_point,intersection_normal,ray,@light,@obj_int)
-      #color =  @obj_int.material.diffuse #2D
+      blinn_phong = calculate_blinn_phong_shading(intersection_point,intersection_normal,ray,@light, @obj_int)
       puts "lambert r:#{lambert.red*255} g:#{lambert.green*255} b:#{lambert.blue*255}"
-      color = lambert #shade lambert
+      puts "phong r:#{blinn_phong.red*255} g:#{blinn_phong.green*255} b:#{blinn_phong.blue*255}"
+
+      #color =  @obj_int.material.diffuse #2D
+      #color = lambert #shade lambert
+      color = lambert.add_color(blinn_phong) #3D Phong
     end
 
     return {red: color.red, green: color.green, blue: color.blue}

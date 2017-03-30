@@ -43,7 +43,8 @@ class Renderer
     at_exit do
       puts 'Saving file'
       #save_image('2D.png') #2D
-      save_image('lambert.png') #Sombras lambert
+      #save_image('lambert.png') #Sombras lambert
+      save_image('phong.png') #Sombras phong
     end
     glutMainLoop
   end
