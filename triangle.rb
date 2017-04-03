@@ -7,7 +7,7 @@ class Triangle
     @material = material
   end
 
-  def isLeft?(n)
+def isLeft?(n)
 	m = n.module()
 	return n.x/m < 0 && n.y/m < 0 && n.z/m < 0
 end
